@@ -1,3 +1,3 @@
-C:/Users/HsPenguin/Desktop/Project/cs260-project/cmake-build-debug/CMakeFiles/Project.dir
-C:/Users/HsPenguin/Desktop/Project/cs260-project/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/HsPenguin/Desktop/Project/cs260-project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/Penguin/Documents/KAUST/Design and Analysis of Algorithms/cs260-project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/Penguin/Documents/KAUST/Design and Analysis of Algorithms/cs260-project/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/Penguin/Documents/KAUST/Design and Analysis of Algorithms/cs260-project/cmake-build-debug/CMakeFiles/Project.dir

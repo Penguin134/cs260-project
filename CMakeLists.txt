@@ -4,7 +4,8 @@ project(Project)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Project
-        # src/main.cpp
-        # src/poly.h
-        src/bruteForce.cpp
+#        src/main.cpp
+        src/poly.h
+        src/evaluation.cpp
+#        src/generateData.cpp
 )
