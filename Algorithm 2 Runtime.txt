@@ -1,0 +1,8 @@
+Stage 0. Poly Size: 5. Time:0.0679317ms
+Stage 1. Poly Size: 20. Time:0.211327ms
+Stage 2. Poly Size: 100. Time:0.718279ms
+Stage 3. Poly Size: 1000. Time:5.6998ms
+Stage 4. Poly Size: 5000. Time:54.4164ms
+Stage 5. Poly Size: 10000. Time:115.542ms
+Stage 6. Poly Size: 50000. Time:526.137ms
+Stage 7. Poly Size: 100000. Time:1241.46ms

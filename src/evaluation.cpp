@@ -71,6 +71,53 @@ Poly bruteForce(int f_0, std::vector<Z>& g){
     }
     return Poly(f);
 }
+void solveFx(int l,int r, std::vector<Z> &f, std::vector<Z> &w, std::vector<Z> &g) {
+    if (l==r) {
+        if (l != 0){
+            f[l] = w[l];
+        }
+        return;
+    }
+    int mid = (l + r) / 2;
+    solveFx(l, mid, f, w, g);
+    Poly h(std::vector<Z>(r - l + 1));
+    for (int i = 0; i <= mid - l;i++){
+        h[i] = f[i+l];
+    }
+    std::vector<Z> gpart(g.begin(), g.begin() + r - l + 1);
+    Poly g_tmp(gpart);
+    Poly contribution = h * g_tmp;
+    for (int i=mid + 1; i <= r; i++){
+        w[i] += contribution[i - l];
+    }
+    solveFx(mid + 1, r, f, w, g);
+}
+
+std::vector<Z> divide_and_conquer(int f_0, std::vector<Z> &g) {
+    std::vector<Z> w(g.size());
+    std::vector<Z> f(g.size());
+    f[0] = f_0;
+    solveFx(0, g.size(), f, w, g);
+    return f;
+}
+
+double judge1(int idx){
+    std::pair<inData, ansData> data = loadTestData(idx);
+    Poly ans = data.second.ans;
+
+    auto startTime = std::chrono::high_resolution_clock::now();
+
+    Poly out = divide_and_conquer(data.first.f_0, data.first.g);
+
+    auto endTime = std::chrono::high_resolution_clock::now();
+
+    if (!compare(out, ans) and false){
+        std::cout<<"[Test Point "+std::to_string(idx)+"] Wrong Answer.\n";
+    }
+
+    std::chrono::duration<double, std::milli> runTime = endTime - startTime;
+    return runTime.count();
+}
 
 double judge2(int idx){
     std::pair<inData, ansData> data = loadTestData(idx);
@@ -115,11 +162,12 @@ int main(){
     int idx = 0;
     std::vector<int> stages = {100, 100, 20, 10, 5, 3, 1, 1};
     std::vector<int> n = {5, 20, 100, 1000, 5000, 10000, 50000, 100000};
-    std::ofstream outFile("./BF Runtime.txt");
+    std::ofstream outFile("./Algorithm 1 Runtime.txt");
     for (int i = 0; i < stages.size(); ++i){
-        printf("Stage %d\n", i);
+        //printf("Stage %d\n", i);
         for (int test = 0; test < stages[i]; ++test, ++idx){
-            accu_time += judgeBF(idx);
+            printf("idx = %d\n", idx);
+            accu_time += judge1(idx);
         }
         accu_time /= stages[i];
         outFile << "Stage " << i << ". Poly Size: " << n[i] << ". Time:" << accu_time << "ms\n";
