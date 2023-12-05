@@ -39,11 +39,17 @@ vector<Z> divide_and_conquer(int f_0, vector<Z> &g) {
 }
 
 int main(){
-    int f_0 = 1;
-    vector<Z> G({0, 3, 4, 4});
+    int n, f_0, x;
+    cin >> n;
+    cin >> f_0;
+    vector<Z> G(0);
+    for (int i=0;i<n;i++) {
+        cin >> x;
+        G.push_back(x);
+    }
     vector<Z> result = divide_and_conquer(f_0, G);
     for (auto i: result){
         cout << i << " ";
     }
-    cout <<endl;
+    cout << endl;
 }
